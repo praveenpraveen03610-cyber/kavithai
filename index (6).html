@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You 🖤</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Background Image & Dark Overlay (Guaranteed Working Image) */
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Opening Overlay (Tap to open page & play music) */
+        #welcome-overlay {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: #0b0b0b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        #welcome-overlay h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            color: #ff4d4d;
+        }
+
+        #welcome-overlay p {
+            color: #b0b0b0;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .magic-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        .magic-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Main Card Container */
+        .card {
+            background: rgba(18, 18, 18, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 35px 25px;
+            border-radius: 20px;
+            color: #e0e0e0;
+            max-width: 90%;
+            width: 450px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        /* Custom Scrollbar for Card */
+        .card::-webkit-scrollbar {
+            width: 4px;
+        }
+        .card::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            color: #ffffff;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .poetry-text {
+            font-size: 15px;
+            line-height: 1.8;
+            white-space: pre-line;
+            text-align: left;
+            color: #cccccc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Opening Screen -->
+    <div id="welcome-overlay">
+        <h2>✨ Oru Kavithai Unakkaga ✨</h2>
+        <p>Tap below to open with music...</p>
+        <button class="magic-btn" onclick="startExperience()">Open & Play 🎵</button>
+    </div>
+
+    <!-- Main Content Card -->
+    <div class="card">
+        <h3>Welcome to My Dear Reader ❤️</h3>
+        <p class="poetry-text">
+Your life is yours… but my heart belongs only to you. 🥺🖤
+
+Live your life the way you want…
+I will never stand in the way of your happiness.
+I’ve always let you be free,
+like a butterfly in the sky. 🦋
+
+If you’re angry, I’ll understand.
+If you’re hurting, I’ll be there.
+If you’re happy,
+I’ll make your happiness mine.
+
+My love is not about controlling you…
+It’s about understanding you
+and wanting nothing but your happiness.
+
+But…
+
+We truly love each other.
+Yet there’s a wall between our love—
+a wall that neither of us built. 🥺
+
+I’m not ready to let you go…
+and you’re not ready to let go of your family.
+
+That’s why our love
+lives with one question every day—
+
+“Will we ever be together?”
+
+I will never control your life.
+Whatever you choose,
+even if it breaks me,
+I will respect your decision.
+
+But my heart has already
+chosen only you.
+
+One day,
+I’ll cross that wall
+and stand at your doorstep…
+
+If you’re still waiting for me,
+our love will become our life.
+
+And if you’re not…
+
+I’ll walk away silently,
+without ever blaming you.
+
+Just because we couldn’t be together
+doesn’t mean our love was a lie.
+
+Wherever you are,
+I only want you to be happy…
+
+But somewhere in my heart,
+I’ll keep one little hope alive—
+
+One day, the wall that separated us
+will lose to the love we shared. 🖤
+        </p>
+    </div>
+
+    <!-- Background Music Audio Tag (Unoda song file name-ah inge podanum) -->
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startExperience() {
+            var music = document.getElementById("bg-music");
+            var overlay = document.getElementById("welcome-overlay");
+            
+            // Play audio and hide overlay
+            music.play().then(function() {
+                console.log("Music playing successfully");
+            }).catch(function(error) {
+                console.log("Audio play error: ", error);
+            });
+            
+            overlay.style.opacity = "0";
+            setTimeout(function() {
+                overlay.style.display = "none";
+            }, 500);
+        }
+    </script>
+</body>
+</html>
